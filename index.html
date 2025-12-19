@@ -3,86 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anılar Kasette</title>
+    <title>Anılar Kasette | Betaa3d</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            width: 85%;
-            max-width: 350px;
-            padding: 30px;
-            background: #1e1e1e;
-            border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-            text-align: center;
-        }
-        .cassette-icon {
-            font-size: 70px;
-            margin-bottom: 20px;
-            display: inline-block;
-            animation: rotate 5s linear infinite;
-        }
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        h1 { font-size: 22px; color: #1DB954; }
-        .btn {
-            display: block;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
+        /* Önceki şık tasarımlarımızı buraya ekliyoruz */
+        body { font-family: 'Poppins', sans-serif; background-color: #121212; color: #fff; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { width: 85%; max-width: 350px; padding: 30px; background: #1e1e1e; border-radius: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.7); text-align: center; }
+        .cassette-icon { font-size: 70px; margin-bottom: 20px; display: inline-block; animation: rotate 5s linear infinite; }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        h1 { font-size: 22px; color: #1DB954; margin-bottom: 10px; }
+        p { font-size: 14px; color: #b3b3b3; margin-bottom: 25px; }
+        .btn { display: block; padding: 15px; margin: 10px 0; border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.3s; }
         .btn-spotify { background-color: #1DB954; color: white; }
         .btn-youtube { background-color: #FF0000; color: white; }
-        .footer {
-            margin-top: 40px;
-            font-size: 14px; /* Biraz daha büyüttük */
-            font-weight: 600; /* Kalınlaştırdık */
-            color: #888; /* Daha görünür bir gri yaptık */
-            letter-spacing: 2px; /* Harf aralarını açarak premium bir hava kattık */
-            text-transform: uppercase; /* Tüm harfleri büyük yaptık */
-            border-top: 1px solid #333; /* Üstüne ince bir çizgi ekleyerek ayırdık */
-            padding-top: 15px;
-        }
+        .footer { margin-top: 40px; font-size: 11px; color: #444; letter-spacing: 2px; }
+        .footer a { color: #1DB954; text-decoration: none; }
         
-        .footer a {
-            color: #1DB954; /* Marka ismini yeşil yaptık */
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        
-        .footer a:hover {
-            text-shadow: 0 0 10px #1DB954; /* Üzerine gelince parlama efekti */
-}
+        /* Yükleme ekranı için küçük bir ayar */
+        #loading { font-size: 12px; color: #888; }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <div class="cassette-icon">📼</div>
-        <h1>Senin İçin Seçtim...</h1>
-        <p>Bu kasetin içinde sana özel bir mesaj var.</p>
-        
-        <a href="https://music.youtube.com/watch?v=N2WchAwoIR8" class="btn btn-youtube" target="_blank">YouTube'da İzle</a>
-        
-        <a href="https://open.spotify.com/intl-tr/track/6FGbxOWr2PhOHd6N06nafP?si=f13ebc2210d44b95" class="btn btn-spotify" target="_blank">Spotify'da Dinle</a>
-        
-        
-        <div class="footer">
-            <a href="https://www.instagram.com/betaa3d/" target="_blank">BETAA3D</a> tarafından hazırlanmıştır.
+        <div id="loading">Veriler yükleniyor...</div>
+        <div id="content" style="display: none;">
+            <div class="cassette-icon">📼</div>
+            <h1 id="baslik">Senin İçin Seçtim...</h1>
+            <p id="mesaj">Bir hatıra yükleniyor.</p>
+            
+            <a href="#" id="link-sp" class="btn btn-spotify" target="_blank">Spotify'da Dinle</a>
+            <a href="#" id="link-yt" class="btn btn-youtube" target="_blank">YouTube'da İzle</a>
+            
+            <div class="footer">3D PRINTED BY <a href="#">BETAA3D</a></div>
         </div>
     </div>
+
+    <script>
+        // 1. URL'den ID'yi al (Örn: ?id=001)
+        const params = new URLSearchParams(window.location.search);
+        const kasetId = params.get('id');
+
+        // 2. JSON dosyasını çek
+        fetch('veriler.json')
+            .then(res => res.json())
+            .then(data => {
+                const kaset = data[kasetId];
+                if (kaset) {
+                    // Sayfayı güncelle
+                    document.getElementById('baslik').innerText = kaset.baslik;
+                    document.getElementById('mesaj').innerText = kaset.mesaj;
+                    document.getElementById('link-yt').href = kaset.yt;
+                    document.getElementById('link-sp').href = kaset.sp;
+                    
+                    // İçeriği göster, yükleniyor yazısını gizle
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('content').style.display = 'block';
+                } else {
+                    document.getElementById('loading').innerText = "Kaset bulunamadı! 404";
+                }
+            })
+            .catch(err => {
+                document.getElementById('loading').innerText = "Bir hata oluştu.";
+                console.error(err);
+            });
+    </script>
 </body>
 </html>
