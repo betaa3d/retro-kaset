@@ -47,7 +47,26 @@
         }
         .btn-spotify { background-color: #1DB954; color: white; }
         .btn-youtube { background-color: #FF0000; color: white; }
-        .footer { margin-top: 20px; font-size: 11px; color: #444; }
+        .footer {
+            margin-top: 40px;
+            font-size: 14px; /* Biraz daha büyüttük */
+            font-weight: 600; /* Kalınlaştırdık */
+            color: #888; /* Daha görünür bir gri yaptık */
+            letter-spacing: 2px; /* Harf aralarını açarak premium bir hava kattık */
+            text-transform: uppercase; /* Tüm harfleri büyük yaptık */
+            border-top: 1px solid #333; /* Üstüne ince bir çizgi ekleyerek ayırdık */
+            padding-top: 15px;
+        }
+        
+        .footer a {
+            color: #1DB954; /* Marka ismini yeşil yaptık */
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .footer a:hover {
+            text-shadow: 0 0 10px #1DB954; /* Üzerine gelince parlama efekti */
+}
     </style>
 </head>
 <body>
@@ -61,7 +80,9 @@
         <a href="https://open.spotify.com/intl-tr/track/6FGbxOWr2PhOHd6N06nafP?si=f13ebc2210d44b95" class="btn btn-spotify" target="_blank">Spotify'da Dinle</a>
         
         
-        <div class="footer">3D PRINTED BY [MARKA ADIN]</div>
+        <div class="footer">
+            3D PRINTED BY <a href="https://www.instagram.com/betaa3d/" target="_blank">BETAA3D</a>
+        </div>
     </div>
 </body>
 </html>
