@@ -6,34 +6,85 @@
     <title>Anılar Kasette | Betaa3d</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        /* Ana Tasarım (Mevcut halini koruyoruz) */
         body { font-family: 'Poppins', sans-serif; background-color: #121212; color: #fff; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; transition: background 0.8s ease; }
         .container { width: 85%; max-width: 350px; padding: 30px; background: rgba(30, 30, 30, 0.9); border-radius: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.7); text-align: center; backdrop-filter: blur(10px); }
         .cassette-icon { font-size: 70px; margin-bottom: 20px; display: inline-block; animation: rotate 5s linear infinite; }
         @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        
         h1 { font-size: 22px; color: #1DB954; margin-bottom: 5px; }
         #tarih { font-size: 12px; color: #888; margin-bottom: 15px; letter-spacing: 1px; }
         #mesaj { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
         #soz { font-size: 13px; font-style: italic; color: #b3b3b3; margin-bottom: 25px; padding: 0 10px; }
+
         .btn { display: block; padding: 15px; margin: 10px 0; border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.3s; }
         .btn-spotify { background-color: #1DB954; color: white; }
         .btn-youtube { background-color: #FF0000; color: white; }
-        .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #333; font-size: 12px; }
-        .footer a { color: #1DB954; text-decoration: none; }
+        
+        /* FOOTER GÜNCELLEMESİ - Logolu Yeni Tasarım */
+        .footer {
+            margin-top: 40px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #888;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            display: flex;             /* İçerikleri hizalamak için */
+            justify-content: center;   /* Ortala */
+            align-items: center;       /* Dikeyde ortala */
+            gap: 5px;                  /* Yazı ile link arasındaki boşluk */
+        }
+        
+        .footer a {
+            color: #1DB954; /* Marka yeşili */
+            text-decoration: none;
+            display: inline-flex; /* Logo ve yazıyı yan yana, hizalı tutar */
+            align-items: center;
+            gap: 6px;             /* Logo ile Betaa3D yazısı arasındaki boşluk */
+            transition: 0.3s;
+            padding: 5px 10px;    /* Tıklama alanını biraz genişletir */
+            border-radius: 20px;  /* Hafif yuvarlak köşeler */
+        }
+        
+        .footer a:hover {
+            color: #fff; /* Üzerine gelince yazı beyaz olur */
+            background: rgba(29, 185, 84, 0.1); /* Hafif yeşil bir arka plan ekler */
+        }
+        
+        /* Instagram SVG Logosu Ayarları */
+        .footer svg {
+            fill: currentColor; /* Logonun rengi, yazının rengiyle (yeşil/beyaz) aynı olur */
+            width: 16px;        /* Logo genişliği */
+            height: 16px;       /* Logo yüksekliği */
+        }
+        
         #loading { font-size: 14px; color: #888; }
     </style>
 </head>
 <body>
+
     <div class="container">
         <div id="loading">Hatıralar yükleniyor...</div>
+        
         <div id="content" style="display: none;">
             <div class="cassette-icon">📼</div>
-            <h1 id="baslik"></h1>
+            <h1 id="baslik">Yükleniyor...</h1>
             <div id="tarih"></div>
             <p id="mesaj"></p>
             <p id="soz"></p>
+            
             <a href="#" id="link-sp" class="btn btn-spotify" target="_blank">Spotify'da Dinle</a>
             <a href="#" id="link-yt" class="btn btn-youtube" target="_blank">YouTube'da İzle</a>
-            <div class="footer"><a href="https://www.instagram.com/betaa3d" target="_blank">Betaa3D</a> tarafından hazırlandı.</div>
+            
+            <div class="footer">
+                Hazırlayan: 
+                <a href="https://www.instagram.com/betaa3d" target="_blank">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    Betaa3D
+                </a>
+            </div>
         </div>
     </div>
 
@@ -50,19 +101,22 @@
                     document.getElementById('tarih').innerText = kaset.tarih || "";
                     document.getElementById('mesaj').innerText = kaset.sarki;
                     document.getElementById('soz').innerText = kaset.soz ? `"${kaset.soz}"` : "";
+                    
                     if(kaset.tema_renk) {
                         document.body.style.background = `linear-gradient(180deg, #121212 0%, ${kaset.tema_renk}44 100%)`;
                     }
+
                     document.getElementById('link-yt').href = kaset.yt;
                     document.getElementById('link-sp').href = kaset.sp;
+                    
                     document.getElementById('loading').style.display = 'none';
                     document.getElementById('content').style.display = 'block';
                 } else {
-                    document.getElementById('loading').innerText = "Kaset bulunamadı! (URL sonuna ?id=001 ekleyin)";
+                    document.getElementById('loading').innerText = "Kaset bulunamadı! Lütfen ID'yi kontrol edin.";
                 }
             })
             .catch(err => {
-                document.getElementById('loading').innerText = "JSON hatası! Virgülleri kontrol edin.";
+                document.getElementById('loading').innerText = "Bir hata oluştu. JSON dosyasını kontrol edin.";
                 console.error(err);
             });
     </script>
