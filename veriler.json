@@ -6,10 +6,17 @@
     "sp": "https://open.spotify.com/intl-tr/track/6FGbxOWr2PhOHd6N06nafP?si=f13ebc2210d44b95"
   },
   "002": {
-    "isim": "To My Love",
-    "sarki": "Perfect",
-    "yt": "https://youtube.com/...",
-    "sp": "https://spotify.com/..."
+{
+  "001": {
+    "isim": "Betüle..",
+    "sarki": "Manifest",
+    "tarih": "19.12.2025",
+    "soz": "Gelecekten bir hatıra...",
+    "tema_renk": "#1DB954",
+    "yt": "https://music.youtube.com/watch?v=N2WchAwoIR8",
+    "sp": "https://open.spotify.com/intl-tr/track/6FGbxOWr2PhOHd6N06nafP?si=f13ebc2210d44b95"
+  }
+}
   }
 }
 
