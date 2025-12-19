@@ -87,6 +87,11 @@
                     // Sayfayı güncelle
                     document.getElementById('baslik').innerText = kaset.baslik;
                     document.getElementById('mesaj').innerText = kaset.mesaj;
+                    // Tarih ve sözü güncelleme
+                    document.getElementById('tarih').innerText = kaset.tarih;
+                    document.getElementById('soz').innerText = `"${kaset.soz}"`;
+                  
+                    document.body.style.background = `linear-gradient(180deg, #121212 0%, ${kaset.tema_renk}44 100%)`;
                     document.getElementById('link-yt').href = kaset.yt;
                     document.getElementById('link-sp').href = kaset.sp;
                     
